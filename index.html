@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUDO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS LUDO</h1>
+        <h3>Target Scoore is = 30</h3>
+        <!-- <div id="gif"> </div> -->
+            <div class="dice">
+                <p>Player 1</p>
+                <img src='Images/dice1.png' id="check1">
+                <br><br>
+                <input id="in1" type="number">
+            </div>
+            <div class="dice">
+                <p>Player 2</p>
+                <img src='Images/dice1.png' id="check2">
+                <br><br>
+                <input id="in2" type="number">
+            </div>
+            <div>
+                <button onclick="play()">Roll the Dice</button>
+            </div>
+        <!-- </div> -->
+
+    </div>
+
+
+    <script>
+        var target = 30;
+        var p1 = 0;
+        var p2 = 0;
+        var count = 1;
+
+        function play() {
+
+            // document.getElementById('gif').innerHTML = "<img src=\'https://domain.com/adv/banner.jpg\' width=\'400px\' height=\'150px\'>";
+            setTimeout(() => {
+
+                var player1 = Math.floor(Math.random() * 6) + 1;
+                var play1dice = `Images/dice${player1}.png`;
+
+                document.getElementById("check1").setAttribute('src',
+                    play1dice); //to change the src imeage in #check1
+                p1 += player1; //player1's random value + with p1 & stored to p1
+                document.getElementById("in1").value = p1; //assigning the p1 value in the #in1 input box
+
+
+                var player2 = Math.floor(Math.random() * 6) + 1;
+                // document.getElementById("check2").value = player2
+                var play2dice = `Images/dice${player2}.png`;
+
+                document.getElementById("check2").setAttribute('src',
+                    play2dice); //to change the src imeage in #check2
+                p2 += player2;
+                document.getElementById("in2").value = p2;
+
+
+                if (p1 >= target) {
+                    document.querySelector("h1").innerHTML = "Player 1 won the match";
+                } else if (p2 >= target) {
+                    document.querySelector("h1").innerHTML = "Player 2 won the match";
+
+                }
+
+            }, 2000);//2sec.
+        }
+    </script>
+</body>
+
+</html>
